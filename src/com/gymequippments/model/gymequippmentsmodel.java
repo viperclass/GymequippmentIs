@@ -6,7 +6,7 @@ package com.gymequippments.model;
 
 /**
  *
- * @author ACER
+ * @author SHUBHAM BHATTA
  */
 public class gymequippmentsmodel {
     private String ID;
@@ -83,7 +83,7 @@ public class gymequippmentsmodel {
         this.use = use;
     }
 
-   
+    
         
 
     

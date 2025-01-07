@@ -8,7 +8,7 @@ import java.util.regex.Pattern;
 
 /**
  *
- * @author ACER
+ * @author SHUBHAM BHATTA
  */
 public class Validate {
     
