@@ -5,10 +5,10 @@
 package com.gymequippments.view;
 
 import com.gymequipments.util.Validate;
-import com.gymequippments.comtroller.algorithms.BinarySearch;
-import com.gymequippments.comtroller.algorithms.InsertionSort;
-import com.gymequippments.comtroller.algorithms.MergeSort;
-import com.gymequippments.comtroller.algorithms.SelectionSort;
+import com.gymequippments.controller.algorithms.BinarySearch;
+import com.gymequippments.controller.algorithms.InsertionSort;
+import com.gymequippments.controller.algorithms.MergeSort;
+import com.gymequippments.controller.algorithms.SelectionSort;
 import com.gymequippments.model.gymequippmentsmodel;
 import java.awt.CardLayout;
 import java.util.ArrayList;
@@ -101,7 +101,7 @@ public class gymequippmentsIs extends javax.swing.JFrame {
         homeButton = new javax.swing.JButton();
         adminButton = new javax.swing.JButton();
         logo = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
         homePageMidPanel = new javax.swing.JPanel();
         adminPanel = new javax.swing.JPanel();
         scrollPanelTable = new javax.swing.JScrollPane();
@@ -117,20 +117,20 @@ public class gymequippmentsIs extends javax.swing.JFrame {
         addbutton = new javax.swing.JButton();
         deleteButton = new javax.swing.JButton();
         updateButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        clearbutton = new javax.swing.JButton();
         IdTextField = new javax.swing.JTextField();
+        searchpanel = new javax.swing.JPanel();
+        dropdownpanel = new javax.swing.JPanel();
+        nameTextField = new javax.swing.JTextField();
         weightTextField = new javax.swing.JTextField();
         BrandTextField = new javax.swing.JTextField();
+        categoryField = new javax.swing.JTextField();
         modelNoTextfield = new javax.swing.JTextField();
         UseTextField = new javax.swing.JTextField();
-        nameTextField = new javax.swing.JTextField();
-        categoryField = new javax.swing.JTextField();
-        searchpanel = new javax.swing.JPanel();
-        searchStudentLabel = new javax.swing.JLabel();
         SearchTextField = new javax.swing.JTextField();
-        dropdownpanel = new javax.swing.JPanel();
-        sortdropdown = new javax.swing.JComboBox<>();
+        searchStudentLabel = new javax.swing.JLabel();
         shortbytextfield = new javax.swing.JLabel();
+        sortdropdown = new javax.swing.JComboBox<>();
         homePanel = new javax.swing.JPanel();
         hometitlepanel = new javax.swing.JPanel();
         homelabel = new javax.swing.JLabel();
@@ -192,10 +192,10 @@ public class gymequippmentsIs extends javax.swing.JFrame {
 
         logo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/com/gymequipments/resources/gym.png"))); // NOI18N
 
-        jButton2.setText("LOG OUT");
-        jButton2.addMouseListener(new java.awt.event.MouseAdapter() {
+        logoutButton.setText("LOG OUT");
+        logoutButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton2MouseClicked(evt);
+                logoutButtonMouseClicked(evt);
             }
         });
 
@@ -212,7 +212,7 @@ public class gymequippmentsIs extends javax.swing.JFrame {
                     .addComponent(adminButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(homeButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(aboutusButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(logoutButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(0, 0, Short.MAX_VALUE))
         );
         menuPanelLayout.setVerticalGroup(
@@ -227,7 +227,7 @@ public class gymequippmentsIs extends javax.swing.JFrame {
                 .addGap(37, 37, 37)
                 .addComponent(aboutusButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(36, 36, 36)
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -305,7 +305,7 @@ public class gymequippmentsIs extends javax.swing.JFrame {
 
         addbutton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         addbutton.setText("ADD");
-        addbutton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        addbutton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         addbutton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 addbuttonMouseClicked(evt);
@@ -319,7 +319,7 @@ public class gymequippmentsIs extends javax.swing.JFrame {
 
         deleteButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         deleteButton.setText("DELETE");
-        deleteButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
+        deleteButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
         deleteButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 deleteButtonMouseClicked(evt);
@@ -328,43 +328,103 @@ public class gymequippmentsIs extends javax.swing.JFrame {
 
         updateButton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
         updateButton.setText("UPDATE");
-        updateButton.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0), new java.awt.Color(0, 0, 0)));
-
-        jButton1.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
-        jButton1.setText("CLEAR");
-        jButton1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.LOWERED, new java.awt.Color(102, 102, 102), new java.awt.Color(153, 153, 153), new java.awt.Color(51, 51, 51), new java.awt.Color(102, 102, 102)));
-        jButton1.addMouseListener(new java.awt.event.MouseAdapter() {
+        updateButton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        updateButton.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jButton1MouseClicked(evt);
+                updateButtonMouseClicked(evt);
             }
         });
 
+        clearbutton.setFont(new java.awt.Font("Times New Roman", 1, 12)); // NOI18N
+        clearbutton.setText("CLEAR");
+        clearbutton.setBorder(javax.swing.BorderFactory.createMatteBorder(2, 2, 2, 2, new java.awt.Color(0, 0, 0)));
+        clearbutton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                clearbuttonMouseClicked(evt);
+            }
+        });
+
+        IdTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(153, 153, 255), null, null));
         IdTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 IdTextFieldActionPerformed(evt);
             }
         });
 
-        weightTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                weightTextFieldActionPerformed(evt);
-            }
-        });
+        searchpanel.setBackground(new java.awt.Color(112, 88, 124));
+        searchpanel.setForeground(new java.awt.Color(255, 255, 255));
 
-        modelNoTextfield.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modelNoTextfieldActionPerformed(evt);
-            }
-        });
+        javax.swing.GroupLayout searchpanelLayout = new javax.swing.GroupLayout(searchpanel);
+        searchpanel.setLayout(searchpanelLayout);
+        searchpanelLayout.setHorizontalGroup(
+            searchpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 302, Short.MAX_VALUE)
+        );
+        searchpanelLayout.setVerticalGroup(
+            searchpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 150, Short.MAX_VALUE)
+        );
 
+        dropdownpanel.setBackground(new java.awt.Color(112, 89, 124));
+
+        javax.swing.GroupLayout dropdownpanelLayout = new javax.swing.GroupLayout(dropdownpanel);
+        dropdownpanel.setLayout(dropdownpanelLayout);
+        dropdownpanelLayout.setHorizontalGroup(
+            dropdownpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 160, Short.MAX_VALUE)
+        );
+        dropdownpanelLayout.setVerticalGroup(
+            dropdownpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 284, Short.MAX_VALUE)
+        );
+
+        nameTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(102, 204, 255), null, null));
         nameTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 nameTextFieldActionPerformed(evt);
             }
         });
 
-        searchpanel.setBackground(new java.awt.Color(112, 88, 124));
-        searchpanel.setForeground(new java.awt.Color(255, 255, 255));
+        weightTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(51, 51, 51), new java.awt.Color(102, 255, 255), null, null));
+        weightTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                weightTextFieldActionPerformed(evt);
+            }
+        });
+
+        BrandTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 255, 255), null, null));
+        BrandTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BrandTextFieldActionPerformed(evt);
+            }
+        });
+
+        categoryField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 255, 255), null, null));
+        categoryField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                categoryFieldActionPerformed(evt);
+            }
+        });
+
+        modelNoTextfield.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 255, 255), null, null));
+        modelNoTextfield.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modelNoTextfieldActionPerformed(evt);
+            }
+        });
+
+        UseTextField.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED, new java.awt.Color(0, 0, 0), new java.awt.Color(153, 255, 255), null, null));
+        UseTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                UseTextFieldActionPerformed(evt);
+            }
+        });
+
+        SearchTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                SearchTextFieldActionPerformed(evt);
+            }
+        });
 
         searchStudentLabel.setFont(new java.awt.Font("Segoe UI Semilight", 1, 18)); // NOI18N
         searchStudentLabel.setForeground(new java.awt.Color(255, 255, 255));
@@ -375,34 +435,9 @@ public class gymequippmentsIs extends javax.swing.JFrame {
             }
         });
 
-        SearchTextField.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                SearchTextFieldActionPerformed(evt);
-            }
-        });
-
-        javax.swing.GroupLayout searchpanelLayout = new javax.swing.GroupLayout(searchpanel);
-        searchpanel.setLayout(searchpanelLayout);
-        searchpanelLayout.setHorizontalGroup(
-            searchpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(searchStudentLabel)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(SearchTextField, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        searchpanelLayout.setVerticalGroup(
-            searchpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(searchpanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(searchpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(searchStudentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(SearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(109, Short.MAX_VALUE))
-        );
-
-        dropdownpanel.setBackground(new java.awt.Color(112, 89, 124));
+        shortbytextfield.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
+        shortbytextfield.setForeground(new java.awt.Color(255, 255, 255));
+        shortbytextfield.setText("short by");
 
         sortdropdown.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ID", "Name", "Brand" }));
         sortdropdown.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(112, 88, 124)));
@@ -412,88 +447,78 @@ public class gymequippmentsIs extends javax.swing.JFrame {
             }
         });
 
-        shortbytextfield.setFont(new java.awt.Font("Segoe UI Light", 1, 18)); // NOI18N
-        shortbytextfield.setForeground(new java.awt.Color(255, 255, 255));
-        shortbytextfield.setText("short by");
-
-        javax.swing.GroupLayout dropdownpanelLayout = new javax.swing.GroupLayout(dropdownpanel);
-        dropdownpanel.setLayout(dropdownpanelLayout);
-        dropdownpanelLayout.setHorizontalGroup(
-            dropdownpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(dropdownpanelLayout.createSequentialGroup()
-                .addGroup(dropdownpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(dropdownpanelLayout.createSequentialGroup()
-                        .addGap(37, 37, 37)
-                        .addComponent(sortdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(dropdownpanelLayout.createSequentialGroup()
-                        .addGap(56, 56, 56)
-                        .addComponent(shortbytextfield)))
-                .addContainerGap(18, Short.MAX_VALUE))
-        );
-        dropdownpanelLayout.setVerticalGroup(
-            dropdownpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, dropdownpanelLayout.createSequentialGroup()
-                .addGap(16, 16, 16)
-                .addComponent(shortbytextfield)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(sortdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(59, 59, 59))
-        );
-
         javax.swing.GroupLayout VariablesPanelLayout = new javax.swing.GroupLayout(VariablesPanel);
         VariablesPanel.setLayout(VariablesPanelLayout);
         VariablesPanelLayout.setHorizontalGroup(
             VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(VariablesPanelLayout.createSequentialGroup()
-                .addGap(52, 52, 52)
                 .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(VariablesPanelLayout.createSequentialGroup()
-                        .addComponent(useLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(UseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 170, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(VariablesPanelLayout.createSequentialGroup()
                         .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addComponent(idlabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addComponent(brandlabel)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(BrandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(18, 18, 18)
-                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addComponent(namelabel)
-                                .addGap(18, 18, 18)
-                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 148, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addComponent(categorylabel)
-                                .addGap(18, 18, 18)
+                                .addGap(16, 16, 16)
                                 .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(VariablesPanelLayout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(weightLabel)
-                        .addGap(18, 18, 18)
-                        .addComponent(weightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(VariablesPanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(modelNolabel)
-                            .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(idlabel)
+                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VariablesPanelLayout.createSequentialGroup()
+                                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(21, 21, 21))
+                                            .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                        .addComponent(brandlabel)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(BrandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                        .addComponent(useLabel)
+                                                        .addGap(30, 30, 30)
+                                                        .addComponent(UseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                .addComponent(namelabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(42, 42, 42)
+                                                .addComponent(weightLabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(weightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(92, 92, 92)
+                                                .addComponent(shortbytextfield))
+                                            .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                .addComponent(categorylabel)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                        .addComponent(searchStudentLabel)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(SearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 270, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                                        .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                        .addGap(18, 18, 18)
+                                                        .addComponent(modelNolabel)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(modelNoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))))))))
                             .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addComponent(modelNoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dropdownpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                .addGap(94, 94, 94)
+                                .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(clearbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 122, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VariablesPanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(sortdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)))
+                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, VariablesPanelLayout.createSequentialGroup()
+                        .addGap(0, 161, Short.MAX_VALUE)
+                        .addComponent(dropdownpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(58, Short.MAX_VALUE))
         );
         VariablesPanelLayout.setVerticalGroup(
@@ -502,45 +527,47 @@ public class gymequippmentsIs extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(VariablesPanelLayout.createSequentialGroup()
-                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(idlabel)
-                            .addComponent(namelabel)
-                            .addComponent(weightLabel)
-                            .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(weightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(186, 186, 186)
-                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(UseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(useLabel)))
+                        .addGap(10, 10, 10)
+                        .addComponent(dropdownpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(VariablesPanelLayout.createSequentialGroup()
-                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addGap(107, 107, 107)
-                                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(categorylabel)
-                                    .addComponent(BrandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(brandlabel)
-                                    .addComponent(modelNolabel)
-                                    .addComponent(modelNoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                .addGap(10, 10, 10)
-                                .addComponent(dropdownpanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(VariablesPanelLayout.createSequentialGroup()
+                                .addGap(24, 24, 24)
+                                .addComponent(shortbytextfield)
+                                .addGap(18, 18, 18)
+                                .addComponent(sortdropdown, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(21, 21, 21)
                                 .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                        .addGap(25, 25, 25)
-                                        .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(VariablesPanelLayout.createSequentialGroup()
-                                        .addGap(18, 18, 18)
-                                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                            .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addComponent(categorylabel)
+                                    .addComponent(brandlabel)
+                                    .addComponent(modelNolabel)
+                                    .addComponent(categoryField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(modelNoTextfield, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BrandTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(idlabel)
+                                .addComponent(namelabel)
+                                .addComponent(weightLabel)
+                                .addComponent(IdTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(nameTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(weightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(88, 88, 88)
+                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(useLabel)
+                            .addComponent(UseTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(SearchTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(searchStudentLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                        .addGap(60, 60, 60)
+                        .addComponent(searchpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(VariablesPanelLayout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addGroup(VariablesPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(addbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(updateButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(deleteButton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(clearbutton, javax.swing.GroupLayout.PREFERRED_SIZE, 51, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(110, Short.MAX_VALUE))
         );
 
@@ -1071,6 +1098,7 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
             registergymequip(gymequippment);
             euiplist.add(gymequippment);
 
+            
             JOptionPane.showMessageDialog(this, "Successfully added!", "INFORMATION", JOptionPane.INFORMATION_MESSAGE);
         }
     }
@@ -1088,24 +1116,16 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
         // TODO add your handling code here:
     }//GEN-LAST:event_IdTextFieldActionPerformed
 
-    private void weightTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_weightTextFieldActionPerformed
-
-    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_nameTextFieldActionPerformed
-
-    private void jButton2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton2MouseClicked
+    private void logoutButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_logoutButtonMouseClicked
         // TODO add your handling code here:
         showPanels("loginPanel");
-    }//GEN-LAST:event_jButton2MouseClicked
+    }//GEN-LAST:event_logoutButtonMouseClicked
 
     private void adminButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_adminButtonActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_adminButtonActionPerformed
 
-    private void jButton1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton1MouseClicked
+    private void clearbuttonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_clearbuttonMouseClicked
         // TODO add your handling code here:
         
         IdTextField.setText("");
@@ -1116,18 +1136,24 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
         nameTextField.setText("");
         categoryField.setText("");
         
-    }//GEN-LAST:event_jButton1MouseClicked
-
-    private void modelNoTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelNoTextfieldActionPerformed
-        
-    }//GEN-LAST:event_modelNoTextfieldActionPerformed
+    }//GEN-LAST:event_clearbuttonMouseClicked
 
     private void deleteButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_deleteButtonMouseClicked
-        int row = tableGymEquipments.getSelectedRow();
-        
-        DefaultTableModel model = (DefaultTableModel)tableGymEquipments .getModel();
+                                                  
+    int row = tableGymEquipments.getSelectedRow();
+
+    if (row >= 0) { // Check if a row is selected
+        DefaultTableModel model = (DefaultTableModel) tableGymEquipments.getModel();
         model.removeRow(row);
-        
+
+        // Show a success message
+        javax.swing.JOptionPane.showMessageDialog(null, "Data deleted successfully.");
+    } else {
+        // Show an error message if no row is selected
+        javax.swing.JOptionPane.showMessageDialog(null, "Please select a row to delete.", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+    }
+ 
+
     }//GEN-LAST:event_deleteButtonMouseClicked
 
     private void SearchTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_SearchTextFieldActionPerformed
@@ -1189,7 +1215,7 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
             insertionSort.performInsertionSort(euiplist);
             break;
 
-        case "Weight":
+        case "Brand":
             mergeSort.performMergeSort(euiplist, 0, euiplist.size() - 1);
             break;
 
@@ -1219,6 +1245,109 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
         gymTableModel.addRow(gymdata);
     });
     }//GEN-LAST:event_sortdropdownActionPerformed
+
+    private void nameTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nameTextFieldActionPerformed
+
+    private void weightTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_weightTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_weightTextFieldActionPerformed
+
+    private void BrandTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BrandTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_BrandTextFieldActionPerformed
+
+    private void categoryFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_categoryFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_categoryFieldActionPerformed
+
+    private void modelNoTextfieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modelNoTextfieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_modelNoTextfieldActionPerformed
+
+    private void UseTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_UseTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_UseTextFieldActionPerformed
+
+    private void updateButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_updateButtonMouseClicked
+   
+                                       
+    // Get the selected row
+    int selectedRow = tableGymEquipments.getSelectedRow();
+
+    if (selectedRow >= 0) {
+        // Fetch new details from input fields
+        String updatedID = IdTextField.getText();
+        String updatedName = nameTextField.getText();
+        String updatedWeight = weightTextField.getText();
+        String updatedBrand = BrandTextField.getText();
+        String updatedCategory = categoryField.getText();
+        String updatedUse = UseTextField.getText();
+        String updatedModelNo = modelNoTextfield.getText();
+
+        // Validation for updated details
+        if (Validate.isNullorEmpty(updatedID) || Validate.isNullorEmpty(updatedName) || 
+            Validate.isNullorEmpty(updatedWeight) || Validate.isNullorEmpty(updatedBrand) || 
+            Validate.isNullorEmpty(updatedCategory) || Validate.isNullorEmpty(updatedUse) || 
+            Validate.isNullorEmpty(updatedModelNo)) {
+
+            JOptionPane.showMessageDialog(this, "Please fill all the fields", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        if (!Validate.isValidID(updatedID)) {
+            JOptionPane.showMessageDialog(this, "ID must be in this format 'KTM 1234'", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!Validate.isValidName(updatedName)) {
+            JOptionPane.showMessageDialog(this, "Name must be filled", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!Validate.isValidCATEGORY(updatedCategory)) {
+            JOptionPane.showMessageDialog(this, "Fill the category field", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!Validate.isValidUSE(updatedUse)) {
+            JOptionPane.showMessageDialog(this, "Fill the use field", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        if (!Validate.isValidMODELNO(updatedModelNo)) {
+            JOptionPane.showMessageDialog(this, "Model number should be in this pattern 'PATS66'", "Validation Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+
+        // Update the equipment details
+        gymequippmentsmodel equipment = euiplist.get(selectedRow);
+        equipment.setID(updatedID);
+        equipment.setName(updatedName);
+        equipment.setWeight(updatedWeight);
+        equipment.setBrand(updatedBrand);
+        equipment.setCategory(updatedCategory);
+        equipment.setUse(updatedUse);
+        equipment.setModel(updatedModelNo);
+
+        // Update the table row
+        DefaultTableModel model = (DefaultTableModel) tableGymEquipments.getModel();
+        model.setValueAt(updatedID, selectedRow, 0);
+        model.setValueAt(updatedName, selectedRow, 1);
+        model.setValueAt(updatedWeight, selectedRow, 2);
+        model.setValueAt(updatedBrand, selectedRow, 3);
+        model.setValueAt(updatedCategory, selectedRow, 4);
+        model.setValueAt(updatedUse, selectedRow, 5);
+        model.setValueAt(updatedModelNo, selectedRow, 6);
+
+        // Show success message
+        JOptionPane.showMessageDialog(this, "Equipment item updated successfully!", "Success", JOptionPane.INFORMATION_MESSAGE);
+    } else {
+        JOptionPane.showMessageDialog(this, "Please select a row to update.", "Update Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+
+
+                                        
+    
+    }//GEN-LAST:event_updateButtonMouseClicked
      
     /**
      * @param args the command line arguments
@@ -1274,6 +1403,7 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
     private javax.swing.JLabel callIconLabel;
     private javax.swing.JTextField categoryField;
     private javax.swing.JLabel categorylabel;
+    private javax.swing.JButton clearbutton;
     private javax.swing.JButton deleteButton;
     private javax.swing.JPanel dropdownpanel;
     private javax.swing.JLabel fabebooklogo;
@@ -1289,8 +1419,6 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
     private javax.swing.JLabel image1Text;
     private javax.swing.JLabel image2;
     private javax.swing.JLabel image2Text;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -1302,6 +1430,7 @@ if (Validate.isNullorEmpty(name) || Validate.isNullorEmpty(Id) || Validate.isNul
     private javax.swing.JLabel loginImage;
     private javax.swing.JPanel loginPanel;
     private javax.swing.JLabel logo;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JLabel mailAdressicon;
     private javax.swing.JPanel mainpanel;
     private javax.swing.JPanel menuPanel;

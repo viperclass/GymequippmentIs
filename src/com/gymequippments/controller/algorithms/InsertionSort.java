@@ -1,4 +1,4 @@
-package com.gymequippments.comtroller.algorithms;
+package com.gymequippments.controller.algorithms;
 
 import com.gymequippments.model.gymequippmentsmodel;
 import java.util.List;

@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package com.gymequippments.comtroller.algorithms;
+package com.gymequippments.controller.algorithms;
 
 
 import com.gymequippments.model.gymequippmentsmodel;
